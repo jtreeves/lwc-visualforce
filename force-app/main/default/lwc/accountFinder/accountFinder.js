@@ -1,29 +1,22 @@
-// import { LightningElement } from 'lwc'
+import { LightningElement, wire } from 'lwc'
+import queryAccountsByRevenue from '@salesforce/apex/AccountListControllerLwc.queryAccountsByRevenue'
 
-// class AccountFinder extends LightningElement {
-//     annualRevenue = null
+class AccountFinder extends LightningElement {
+    annualRevenue = null
 
-//     handleChange(event) {
-//         this.annualRevenue = event.detail.value
-//     }
-
-//     reset() {
-//         this.annualRevenue = null
-//     }
-// }
-
-// export default AccountFinder
-
-import { LightningElement, wire } from 'lwc';
-import queryAccountsByRevenue from '@salesforce/apex/AccountListControllerLwc.queryAccountsByRevenue';
-export default class AccountFinder extends LightningElement {
-    annualRevenue = null;
     handleChange(event) {
-        this.annualRevenue = event.detail.value;
+        this.annualRevenue = event.detail.value
     }
+
     reset() {
-        this.annualRevenue = null;
+        this.annualRevenue = null
     }
-    @wire(queryAccountsByRevenue, { annualRevenue: '$annualRevenue' })
-    accounts;
+
+    @wire(
+        queryAccountsByRevenue, 
+        { annualRevenue: '$annualRevenue' }
+    )
+    accounts
 }
+
+export default AccountFinder
