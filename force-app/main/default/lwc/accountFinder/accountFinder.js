@@ -1,14 +1,14 @@
 import { LightningElement } from 'lwc'
 
 class AccountFinder extends LightningElement {
-    annualReview = null
+    annualRevenue = null
 
     handleChange(event) {
-        this.annualReview = event.detail.value
+        this.annualRevenue = event.detail.value
     }
 
     reset() {
-        this.annualReview = null
+        this.annualRevenue = null
     }
 }
 
