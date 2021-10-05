@@ -14,7 +14,8 @@
 
 // export default AccountFinder
 
-import { LightningElement } from 'lwc';
+import { LightningElement, wire } from 'lwc';
+import queryAccountsByEmployeeNumber from '@salesforce/apex/AccountListControllerLwc.queryAccountsByEmployeeNumber';
 export default class AccountFinder extends LightningElement {
     annualRevenue = null;
     handleChange(event) {
@@ -23,4 +24,6 @@ export default class AccountFinder extends LightningElement {
     reset() {
         this.annualRevenue = null;
     }
+    @wire(queryAccountsByEmployeeNumber, { numberOfEmployees: '$numberOfEmployees' })
+    accounts;
 }
